@@ -1,0 +1,73 @@
+<link rel="import" href="/bower_components/neon-animation/neon-animation-runner-behavior.html"/>
+<link rel="import" href="/bower_components/neon-animation/animations/slide-from-left-animation.html"/>
+<link rel="import" href="/bower_components/neon-animation/animations/slide-from-right-animation.html"/>
+<link rel="import" href="anim-block.html"/>
+
+<dom-module id="intro-page">
+    <style>
+        :host{
+            display: flex;
+            flex-direction: column;
+            flex:1;
+            justify-content: center;
+        }
+        .container{
+            display:flex;
+            position:relative;
+            justify-content: space-around;
+            flex-direction:row;
+            flex-wrap: wrap;
+            min-height:400px;
+        }
+        .block{
+            min-width:450px;
+            margin:30px;
+            flex:1;
+        }
+        .block:nth-of-type(even){
+            align-self:flex-end;
+        }
+        h2{
+            color: #00636b;
+        }
+    </style>
+    <template>
+        <section class="container">
+            <anim-block class="block">
+                <img src="../../images/intro/faster.png"/>
+                <h2>Imagine... Create</h2>
+                <p>
+                    Leave connection, communication and data management to the framework. Focus only on functionality and User-Experience.
+                </p>
+            </anim-block>
+            <anim-block class="block">
+                <img src="../../images/intro/not-dev.png"/>
+                <h2>Not a pro Dev? Not an issue</h2>
+                <p>
+                    Start building awesome IOT apps even if you are not a pro. Python makes programming easy and Extremus-IO builtin modules get you started in minutes.
+                </p>
+            </anim-block>
+            <anim-block class="block">
+                <h2>Block 3</h2>
+                <p>
+                    This is the paragraph in third block. dont know what else to type so typing shit.
+                </p>
+            </anim-block>
+        </section>
+    </template>
+    <script>
+        Polymer({
+            is: 'intro-page',
+            properties: {
+
+            },
+            attached: function(){
+                var list =document.querySelectorAll('.block');
+                console.log(list);
+                for (var i= 0;i<list.length;i++){
+                    list[i].show(500+50*i);
+                }
+            }
+        });
+    </script>
+</dom-module>

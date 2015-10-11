@@ -1,0 +1,81 @@
+<link rel="import" href="/bower_components/neon-animation/neon-animation-runner-behavior.html"/>
+<link rel="import" href="/bower_components/neon-animation/animations/slide-from-left-animation.html"/>
+<link rel="import" href="/bower_components/neon-animation/animations/slide-from-right-animation.html"/>
+<link rel="import" href="/bower_components/neon-animation/animations/fade-in-animation.html"/>
+<link rel="import" href="/bower_components/neon-animation/animations/transform-animation.html"/>
+
+<dom-module id="anim-block">
+    <style>
+        #image{
+            align-self: center;
+        }
+        :host ::content img{
+            height:150px;
+            margin:15px;
+        }
+        .container{
+            display:flex;
+            flex-direction:row;
+        }
+    </style>
+    <template>
+        <section class="container">
+            <div id="image">
+                <content select="img"></content>
+            </div>
+            <div id="text">
+                <div id="header">
+                    <content select="h2">
+                    </content>
+                </div>
+                <div id="body">
+                    <content></content>
+                </div>
+            </div>
+        </section>
+    </template>
+    <script>
+        Polymer({
+            is: 'anim-block',
+            behaviors: [
+                Polymer.NeonAnimationRunnerBehavior
+            ],
+            properties: {
+                animationConfig:{
+                    value: function () {
+                        return [{
+                            name: 'slide-from-left-animation',
+                            node: this.$.header,
+                            timing: {delay: 100, easing:'ease-out'}
+                        },{
+                            name: 'slide-from-right-animation',
+                            node: this.$.body,
+                            timing: {delay: 100, easing:'ease-out'}
+                        },{
+                            name: 'fade-in-animation',
+                            node: this,
+                            timing:{delay:300, easing:'ease-out'}
+                        },{
+                            name: 'transform-animation',
+                            node: this.$.image,
+                            timing:{delay:100, easing:'ease-out'}
+                        }];
+                    }
+                }
+            },
+            listeners:{
+                'neon-animation-finish': '_onNeonAnimationFinished'
+            },
+            attached: function(){
+                this.style.opacity='0';
+            },
+            show: function(delay){
+                console.log(delay);
+                this.async(this.playAnimation, delay);
+            },
+            _onNeonAnimationFinished: function(){
+                this.style.opacity='1';
+            }
+        });
+    </script>
+</dom-module>

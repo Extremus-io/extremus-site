@@ -159,7 +159,6 @@ gulp.task('vulcanize', function () {
 // If you require more granular configuration of Vulcanize
 // than polybuild provides, follow instructions from readme at:
 // https://github.com/PolymerElements/polymer-starter-kit/#if-you-require-more-granular-configuration-of-vulcanize-than-polybuild-provides-you-an-option-by
-
 // Rename Polybuild's index.build.html to index.html
 gulp.task('rename-index', function () {
   gulp.src('dist/index.build.html')
@@ -268,14 +267,14 @@ gulp.task('default', ['clean'], function (cb) {
     ['copy', 'styles'],
     'elements',
     ['jshint', 'images', 'fonts', 'html'],
-    'vulcanize','rename-index', // 'cache-config',
+    'vulcanize','rename-index', 'cache-config',
     cb);
 });
 
 gulp.task('deploy',function(){
   return gulp.src('dist/**/*')
       .pipe(ghPages({
-        'remoteUrl': 'https://github.com/Extremus-io/extremus-site.git',
+        'remoteUrl': 'https://github.com/Extremus-io/extremus-io.github.io.git',
         'branch': 'master'
       }));
 });

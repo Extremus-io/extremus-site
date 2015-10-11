@@ -6,9 +6,11 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-
+@import url(https://fonts.googleapis.com/css?family=Lobster|Josefin+Sans|Sigmar+One);
 body {
-  background: #fafafa;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
+    background: #c7e6de;;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #333;
+    font-size:18px;
+    -webkit-font-smoothing: antialiased;
 }
